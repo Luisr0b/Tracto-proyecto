@@ -6,51 +6,53 @@
 <x-layout>            
             <h1>Empleados</h1>
 
-            <a href="empleado/create"><button>Agregar empleado</button></a><br><br>
+            <div class="card">
+                <div class="card-header">
+                    <a class="btn btn-primary btn-sm" href="{{route('empleado.create')}}">Agregar empleado</a>
+                </div>
+            </div>
+            
 
-                <table class="table table-bordered border-1">
-                    <tr>
-                        <td>ID</td>
-                        <td>Nombre completo</td>
-                        <td>Nombre corto</td>
-                        <td>Correo electronico</td>
-                        <td>Numero de nomina</td>
-                        <td>Puesto</td>
-                        <td>Departamento</td>
-                        <td>Fecha de ingreso</td>
-                        <td>Detalles</td>
-                    </tr>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre completo</th>
+                                <th>Nombre corto</th>
+                                <th>Correo</th>
+                                <th>Numero de nomina</th>
+                                <th>Puesto</th>
+                                <th>Departamento</th>
+                                <th>Fecha de ingreso</th>
+                            </tr>
+                        </thead>
 
-                    <?php
-                    $sql="SELECT * from empleados";
-                    $result=mysqli_query($conexion,$sql);
-
-                    while($mostrar=mysqli_fetch_array($result)){
-                        ?>
-                        
-                    <tr>
-                        <td><?php echo $mostrar['id'] ?></td>
-                        <td><?php echo $mostrar['nomb_completo'] ?></td>
-                        <td><?php echo $mostrar['nomb_corto'] ?></td>
-                        <td><?php echo $mostrar['correo'] ?></td>
-                        <td><?php echo $mostrar['n_nomina'] ?></td>
-                        <td><?php echo $mostrar['puesto'] ?></td>
-                        <td><?php echo $mostrar['departamento'] ?></td>
-                        <td><?php echo $mostrar['fecha_ingreso'] ?></td>
-                        @foreach ($empleados as $empleado)
-                            <td><a href="empleado/{{ $empleado->id }}"><button>Detalles</button></a></td>
-                            @unset($empleado)
-                        @endforeach
-                    </tr>
-                    <?php
-                    }
-                    ?>
-                    
-                </table>
-                    <ul>
-                        @foreach ($empleados as $empleado)
-                            <li>{{ $empleado['nomb_completo'] }} - {{ $empleado['nomb_corto'] }} - {{ $empleado['correo'] }} - {{ $empleado['n_nomina'] }} - {{ $empleado['puesto'] }} - {{ $empleado['departamento'] }} - {{ $empleado['fecha_ingreso'] }} <a href="empleado/{{ $empleado->id }}"><button>Detalles</button></a></li>
-                        @endforeach
-
-                    </ul>
+                        <tbody>
+                            @foreach ($empleados as $empleado)
+                                <tr>
+                                    <td>{{$empleado->id}}</td>
+                                    <td>{{$empleado->nomb_completo}}</td>
+                                    <td>{{$empleado->nomb_corto}}</td>
+                                    <td>{{$empleado->correo}}</td>
+                                    <td>{{$empleado->n_nomina}}</td>
+                                    <td>{{$empleado->puesto}}</td>
+                                    <td>{{$empleado->departamento}}</td>
+                                    <td>{{$empleado->fecha_ingreso}}</td>
+                                    <td width="10px">
+                                        <a class="btn btn-primary btn-sm" href="empleado/{{ $empleado->id }}/edit">Editar</a>
+                                    </td>
+                                    <td width="10px">
+                                        <form action="{{ route('empleado.destroy', $empleado) }} " method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 </x-layout>
