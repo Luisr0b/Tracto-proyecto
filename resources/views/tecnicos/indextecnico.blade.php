@@ -1,39 +1,48 @@
 <?php
     $conexion=mysqli_connect('localhost','root','','tracto');
 ?>
+
 <x-layout>
-    <h1>Tecnicos</h1>
+    <title>Tecnicos</title>             
+            <h1>Tecnicos</h1>
 
-    <a href="tecnico/create"><button>Agregar tecnico</button></a><br><br>
-
-    <table class="table table-bordered border-1">
-        <tr>
-            <td>ID</td>
-            <td>Nombre completo</td>
-            <td>Nombre corto</td>
-        </tr>
-
-        <?php
-        $sql="SELECT * from tecnicos";
-        $result=mysqli_query($conexion,$sql);
-
-        while($mostrar=mysqli_fetch_array($result)){
-            ?>
+            <div class="card">
+                <div class="card-header">
+                    <a class="btn btn-primary btn-sm" href="{{route('tecnico.create')}}">Agregar tecnico</a>
+                </div>
+            </div>
             
-        <tr>
-            <td><?php echo $mostrar['id'] ?></td>
-            <td><?php echo $mostrar['nomb_completo'] ?></td>
-            <td><?php echo $mostrar['nomb_corto'] ?></td>
-        </tr>
-        <?php
-        }
-        ?>
-        
-    </table>
-        <ul>
-            @foreach ($tecnicos as $tecnico)
-                <li>{{ $tecnico['nomb_completo'] }} - {{ $tecnico['nomb_corto'] }} <a href="tecnico/{{ $tecnico->id }}"><button>Detalles</button></a></li>
-            @endforeach
 
-        </ul> 
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre completo</th>
+                                <th>Nombre corto</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($tecnicos as $tecnico)
+                                <tr>
+                                    <td>{{$tecnico->id}}</td>
+                                    <td>{{$tecnico->nomb_completo}}</td>
+                                    <td>{{$tecnico->nomb_corto}}</td>
+                                    <td width="10px">
+                                        <a class="btn btn-primary btn-sm" href="tecnico/{{ $tecnico->id }}/edit">Editar</a>
+                                    </td>
+                                    <td width="10px">
+                                        <form action="{{ route('tecnico.destroy', $tecnico) }} " method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 </x-layout>

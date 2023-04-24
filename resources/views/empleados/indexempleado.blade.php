@@ -3,7 +3,8 @@
     $conexion=mysqli_connect('localhost','root','','tracto');
 ?>
 
-<x-layout>            
+<x-layout>
+    <title>Empleados</title>            
             <h1>Empleados</h1>
 
             <div class="card">

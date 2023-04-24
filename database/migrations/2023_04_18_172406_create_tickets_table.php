@@ -18,7 +18,11 @@ return new class extends Migration
             $table->string('problema');
             $table->string('solucion');
             $table->string('atendio');
+            $table->enum('status', [1, 2])->default(1);
             $table->timestamps();
+            $table->unsignedBigInteger('empleado_id');
+
+            $table->foreign('empleado_id')->references('id')->on('empleados');
         });
     }
 
