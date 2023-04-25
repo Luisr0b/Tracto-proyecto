@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <title>Empleados</title>
 <h1>Editar Empleado</h1>
 
@@ -72,4 +72,4 @@
         <br><br>
         <a href="/empleado"><button>Regresar</button></a>
 </form>
-</x-layout>
+</x-app-layout>

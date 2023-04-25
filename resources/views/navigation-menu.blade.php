@@ -4,9 +4,9 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="shrink-0 flex items-center">  
                     <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-9 w-auto" />
+                        <img class="block h-8 w-auto lg:hidden" src="/images/logo.png" alt="Autopartes Tracto de Mexico">
                     </a>
                 </div>
 
@@ -14,6 +14,9 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link href="/empleado" :active="request()->routeIs('dashboard')">
+                        {{ __('Empleados') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -99,7 +102,7 @@
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -142,6 +145,7 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            
         </div>
 
         <!-- Responsive Settings Options -->
