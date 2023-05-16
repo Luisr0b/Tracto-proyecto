@@ -1,6 +1,7 @@
 <!-- resources/views/tasks.blade.php -->
  
 <x-layout>
+    <title>Tecnicos</title> 
     <h1>Detalle de tecnico</h1>
         <ul>
             <li>

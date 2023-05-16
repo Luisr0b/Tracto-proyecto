@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Tecnico extends Model
 {
     use HasFactory;
+
+    //Relacion muchos a muchos
+    public function tickets(){
+        return $this->belongsToMany(Ticket::class);
+    }
 }

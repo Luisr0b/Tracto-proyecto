@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empleados</title>
 </head>
 <body>
 
@@ -65,7 +64,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                     <a class="nav-link click-scroll" href="#section_4">Volunteer</a>
                 </li>
 
-                <li class="nav-item dropdown">
+                {{--<li class="nav-item dropdown">
                     <a class="nav-link click-scroll dropdown-toggle" href="#section_5"
                         id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">News</a>
@@ -75,21 +74,23 @@ https://templatemo.com/tm-581-kind-heart-charity
 
                         <li><a class="dropdown-item" href="news-detail.html">News Detail</a></li>
                     </ul>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     @if (Route::has('login'))
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                 @auth
-                                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                                @else
-                                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                 {{ __('Cerrar sesión') }}
+                                </a>
 
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                                    @endif
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                                 @csrf
+                                </form>
+                                @else
+                                    <a href="{{ route('login') }}" class="nav-link">Iniciar sesión</a>
                                 @endauth
-                                </div>
                             @endif
                 </li>
             </ul>

@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<x-app-layout>
+    <title>Empleados</title>
 <h1>Editar Empleado</h1>
 
 <form action="/empleado/{{$empleado->id}}" method="POST">
@@ -79,5 +72,4 @@
         <br><br>
         <a href="/empleado"><button>Regresar</button></a>
 </form>
-</body>
-</html>
+</x-app-layout>

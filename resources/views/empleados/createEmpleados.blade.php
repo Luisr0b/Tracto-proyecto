@@ -3,6 +3,7 @@
 ?>
 
 <x-layout>
+    <title>Empleados</title>
     <h1>Agregar empleado</h1>
             <form action="/empleado" method="POST">
                 @csrf
