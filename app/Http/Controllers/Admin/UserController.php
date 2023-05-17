@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate();
 
         return view('admin.users.index')->with(['users' => $users]);
     }
@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create-users');
     }
 
     /**
@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('admin.users.show-users',compact('user'));
     }
 
     /**

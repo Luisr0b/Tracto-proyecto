@@ -21,19 +21,43 @@
                     <i class="fas fa-times"></i>
                 </button>
 
-                <a href="" title="Crear Usuario">
+                <a href="{{ route('users.create')}}" title="Crear Usuario">
                     <i class="fas fa-plus"></i>
                 </a>
             </div>
         </div>
 
         <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo electronico</th>
+                            <th>Usuario</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha de fin</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->first_name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->username }}</td>
+                                <td>{{ $user->start_date }}</td>
+                                <td>{{ $user->end_date }}</td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+
+            {{ $users->render() }}
         </div>
 
-        <div class="card-footer">
-            Footer
-        </div>
     </div>
 @stop
 
