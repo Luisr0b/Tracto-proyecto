@@ -348,7 +348,7 @@ return [
         ['header' => 'Administración'],
         [
             'text'        => 'Usuarios',
-            'url'         => 'empleado',
+            'url'         => 'users',
             'icon'        => 'far fa-fw fa-user',
         ],
         [

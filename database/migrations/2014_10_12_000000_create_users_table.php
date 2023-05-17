@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('start_date')->requerid();
+            $table->timestamp('start_date')->requerid()->useCurrent = true;
             $table->timestamp('end_date')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
