@@ -40,14 +40,30 @@
                         @enderror
                     </div>
 
-                    <div>
-                        <label for="start-date">Fecha de ingreso</label><br>
-                        <input type="date" name="start-date" id="start-date" min="1950-01-01" max="2099-01-01">
-                        @error('start-date')
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <label for="password">Contraseña</label><br>
+                        <input type="text" name="password" id="password" value="{{ old('password') }}" required><br>
+                        @error('password')
                             <h5>{{$meesage }}</h5>
                         @enderror
                     </div>
-                </form>
+
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <label for="username">Usuario</label><br>
+                        <input type="text" name="username" id="username" value="{{ old('username') }}" required><br>
+                        @error('email')
+                            <h5>{{$meesage }}</h5>
+                        @enderror
+                    </div>
+
+                    <div class="col-12">
+                        <label for="start_date">Fecha de ingreso</label><br>
+                        <input type="date" name="start_date" id="start_date" min="1950-01-01" max="2099-01-01">
+                        @error('start_date')
+                            <h5>{{$meesage }}</h5>
+                        @enderror
+                    </div>
+
             </div>
         </div>
 
@@ -58,6 +74,7 @@
             <div class="float-right">
                 <button type="submit" class="btn btn-success">Agregar empleado</button>
                 <a href="/users" class="btn btn-outline-danger">Regresar</a>
+            </form>
             </div>
         </div>
     </div>
